@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawTalk | Understand Your Best Friend</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* CSS Variables for the Color Palette */
+        :root {
+            --coral-orange: #FF7E5F;
+            --soft-peach: #FEB47B;
+            --dark-charcoal: #2D3436;
+            --light-bg: #F9F9F9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-charcoal);
+            line-height: 1.6;
+        }
+
+        /* --- 1. Header Section --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--coral-orange);
+            text-decoration: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-charcoal);
+            font-weight: 600;
+            margin-left: 30px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--coral-orange); }
+
+        /* --- 2. Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 80px 10%;
+            background: linear-gradient(135deg, var(--coral-orange) 0%, var(--soft-peach) 100%);
+            color: var(--white);
+            min-height: 85vh;
+            gap: 40px;
+        }
+
+        .hero-content { flex: 1; }
+        
+        /* Big Title - Instructional Requirement */
+        .hero-content h1 { 
+            font-size: 4.5rem; 
+            font-weight: 800; 
+            line-height: 1.1; 
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .hero-content p { 
+            font-size: 1.2rem; 
+            margin-bottom: 40px; 
+            opacity: 0.95; 
+            max-width: 550px;
+        }
+
+        .btn {
+            background: var(--white);
+            color: var(--coral-orange);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); 
+        }
+
+        /* Circular Dog Asset - Custom Styled */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .circle-frame {
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border: 15px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- 3. Features Section --- */
+        .features { padding: 100px 10%; text-align: center; background: var(--white); }
+        .features h2 { font-size: 2.5rem; margin-bottom: 60px; font-weight: 800; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: var(--light-bg);
+            border-radius: 25px;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .feature-card i { font-size: 3.5rem; color: var(--coral-orange); margin-bottom: 25px; }
+        .feature-card h3 { margin-bottom: 15px; font-weight: 800; }
+
+        /* --- 4. Fake Testimonials --- */
+        .testimonials { padding: 100px 10%; text-align: center; }
+        .testimonial-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-top: 50px; }
+        
+        .t-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            font-style: italic;
+            position: relative;
+        }
+
+        .t-box::before {
+            content: "\f10d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--soft-peach);
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* --- 5. Footer --- */
+        footer {
+            background: var(--dark-charcoal);
+            color: var(--white);
+            padding: 60px 10% 30px;
+            text-align: center;
+        }
+
+        .footer-logo { font-size: 1.8rem; font-weight: 800; color: var(--coral-orange); margin-bottom: 20px; }
+        
+        .social-links { margin: 25px 0; }
+        .social-links a { color: var(--white); margin: 0 15px; font-size: 1.5rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--coral-orange); }
+
+        .copyright { opacity: 0.6; font-size: 0.9rem; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; }
+
+        /* Responsive Tweaks */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+            .hero-content h1 { font-size: 3rem; }
+            .circle-frame { width: 350px; height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">PawTalk 🐾</a>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#features">Features</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Finally, Understand Every "Woof."</h1>
+            <p>The world's first AI-powered collar that translates pet vocalizations into clear human language. Bridge the gap between you and your best friend.</p>
+            <a href="#" class="btn">Try PawTalk Today</a>
+        </div>
+        <div class="hero-image">
+            <div class="circle-frame">
+                <img src="https://i.ibb.co/3ykG8L3/dog-circle.png" alt="Happy Golden Retriever">
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Smart Tech for Happy Pets</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-language"></i>
+                <h3>Instant Translation</h3>
+                <p>Translates over 50 different vocal patterns into real-time text and audio on your phone.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h3>Mood Tracking</h3>
+                <p>Biometric sensors monitor stress levels and happiness to give you deeper health insights.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-battery-full"></i>
+                <h3>30-Day Battery</h3>
+                <p>Designed for active pets. Charge once and enjoy a full month of conversation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Humans Say</h2>
+        <div class="testimonial-grid">
+            <div class="t-box">
+                <p>"I always thought my dog was hungry, but PawTalk told me he just wanted to watch the birds. It's changed our bond!"</p>
+                <br><strong>- Kevin B., Kochi</strong>
+            </div>
+            <div class="t-box">
+                <p>"Finally knowing exactly why my cat is meowing at 3 AM is worth every penny. Turns out, she just missed me."</p>
+                <br><strong>- Sarah J., Mumbai</strong>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">PawTalk 🐾</div>
+        <p>Innovating the way humans and animals connect.</p>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        <p class="copyright">
+            &copy; 2026 PawTalk Technologies. Invented product for web development practice.
+        </p>
+    </footer>
+
+</body>
+</html>
